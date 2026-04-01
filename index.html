@@ -1,213 +1,319 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-
-<!-- ✅ FAVICON -->
-<link rel="icon" type="image/png" href="./favicon.png">
-<link rel="apple-touch-icon" href="./favicon.jpg">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Affordable Flights & Smooth Air Travel | Easy Booking Online</title>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./favicon.png" sizes="32x32" />
+<link rel="apple-touch-icon" href="./favicon.jpg" />
+    <title>Affordable Flights & Smooth Air Travel | Easy Booking Online</title>
 <meta name="description" content="Book affordable flights with flexible options and a smooth travel experience. Explore popular destinations with easy online booking and reliable service.">
 
-<style>
-:root { color-scheme: light dark; }
-* { box-sizing: border-box; }
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  min-height: 100%;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background: #0b0f1a;
-}
+      * {
+        box-sizing: border-box;
+      }
 
-/* BACKGROUND */
-body {
-  background-image: url("./img/banner.webp");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-  position: relative;
-}
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        min-height: 100%;
+        height: auto;
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Arial,
+          sans-serif;
+        overflow: auto;
+        background: #0b0f1a;
+      }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-  z-index: 1;
-}
+      /* ===== BACKGROUND ===== */
+      body {
+        background-image: url("./img/banner.webp");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        background-attachment: fixed;
+        background-color: #0b0f1a;
+        position: relative;
+      }
 
-body > * { position: relative; z-index: 2; }
+      @supports (-webkit-touch-callout: none) {
+        body {
+          background-attachment: scroll;
+        }
+      }
 
-/* POPUP */
-.mto-backdrop {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999999;
-}
+      /* overlay */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        z-index: 1;
+      }
 
-.mto-modal {
-  width: min(92vw, 380px);
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 25px 70px rgba(0,0,0,0.6);
-  overflow: hidden;
-}
+      /* background safety layer */
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        background-image: url("./img/banner.webp");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+      }
 
-.mto-head {
-  background: #05164d;
-  padding: 14px;
-  text-align: center;
-  position: relative;
-}
+      body > * {
+        position: relative;
+        z-index: 2;
+      }
 
-.mto-title {
-  color: #fff;
-  font-size: 20px;
-  font-weight: 800;
-  margin: 0;
-}
+      /* mobile */
+      @media (max-width: 480px) {
+        body {
+          background-image: url("./img/mobile-banner.webp");
+          background-position: top;
+          background-size: contain;
+          background-attachment: scroll;
+        }
 
-.mto-x {
-  position: absolute;
-  right: 10px;
-  top: 6px;
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-size: 22px;
-  opacity: 0.6;
-}
+        body::after {
+          background-image: url("./img/mobile-banner.webp");
+          background-position: top;
+          background-size: contain;
+        }
+      }
 
-.mto-body {
-  text-align: center;
-  padding: 18px;
-}
+      /* ===== POPUP ===== */
 
-.mto-avatar {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  margin: auto;
-  overflow: hidden;
-  border: 4px solid #fff;
-}
+      .mto-backdrop {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999999;
+      }
 
-.mto-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+      .mto-modal {
+        width: min(92vw, 380px);
 
-.mto-sub { margin: 12px 0; font-weight: 600; color: #555; }
+        background: #ffffff;
 
-.mto-phone {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  background: #05164d;
-  color: #fff;
-  font-size: 22px;
-  font-weight: 900;
-  padding: 14px;
-  border-radius: 12px;
-  text-decoration: none;
-}
+        border-radius: 10px;
 
-.mto-help { margin: 10px 0; font-weight: 700; color: #777; }
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
 
-.mto-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 10px;
-}
+        overflow: hidden;
 
-.mto-btn {
-  background: #05164d;
-  color: #fff;
-  font-weight: 800;
-  padding: 12px;
-  border-radius: 10px;
-  text-decoration: none;
-  text-align: center;
-}
+        position: relative;
 
-.mto-foot {
-  border-top: 1px solid #ddd;
-  padding: 14px;
-  text-align: center;
-  font-weight: 800;
-  font-size: 14px;
-}
-</style>
+        animation: popupShow 0.25s ease;
+      }
 
-<script>
-(function(c,l,a,r,i,t,y){
-c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-})(window, document, "clarity", "script", "w4814b122i");
-</script>
+      @keyframes popupShow {
+        from {
+          transform: translateY(10px) scale(0.97);
+          opacity: 0.9;
+        }
+        to {
+          transform: translateY(0) scale(1);
+          opacity: 1;
+        }
+      }
 
-</head>
+      .mto-head {
+        background: #05164d;
+        padding: 14px;
+        text-align: center;
+        position: relative;
+      }
 
-<body>
+      .mto-title {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 800;
+        margin: 0;
+      }
 
-<!-- ✅ POPUP (UNCHANGED) -->
-<div class="mto-backdrop" id="popup">
-  <div class="mto-modal">
+      /* disabled close button visually */
+      .mto-x {
+        position: absolute;
+        right: 10px;
+        top: 6px;
+        background: transparent;
+        border: none;
+        color: #fff;
+        font-size: 22px;
+        cursor: default;
+        opacity: 0.6;
+      }
+
+      .mto-body {
+        text-align: center;
+        padding: 18px;
+      }
+
+      .mto-avatar {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        margin: auto;
+        overflow: hidden;
+        border: 4px solid #fff;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .mto-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .mto-sub {
+        margin: 12px 0;
+        font-weight: 600;
+        color: #555;
+      }
+
+      .mto-phone {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        background: #05164d;
+        color: #fff;
+        font-size: 22px;
+        font-weight: 900;
+        padding: 14px;
+        border-radius: 12px;
+        text-decoration: none;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .mto-help {
+        margin: 10px 0;
+        font-weight: 700;
+        color: #777;
+      }
+
+      .mto-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 10px;
+      }
+
+      .mto-btn {
+        background: #05164d;
+        color: #fff;
+        font-weight: 800;
+        padding: 12px;
+        border-radius: 10px;
+        text-decoration: none;
+        text-align: center;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .mto-foot {
+        border-top: 1px solid #ddd;
+        padding: 14px;
+        text-align: center;
+        font-weight: 800;
+        font-size: 14px;
+      }
+
+      .mto-foot span {
+        color: red;
+      }
+    </style>
     
-    <div class="mto-head">
-      <h2 class="mto-title">JetBlue Reservations Desk</h2>
-      <button class="mto-x">&times;</button>
-    </div>
-
-    <div class="mto-body">
-      <img src="./logo.svg" style="width:200px;padding-bottom:10px">
-
-      <div class="mto-avatar">
-        <img src="./flight.png">
-      </div>
-
-      <div class="mto-sub">No Hold - Call Answered in 5 Sec</div>
-
-      <a href="tel:+18775411978" class="mto-phone">
-        📞 +1 (877) 541-1978
-      </a>
-
-      <div class="mto-help">24/7 Helpline</div>
-
-      <div class="mto-grid">
-        <a href="tel:+18775411978" class="mto-btn">New Booking</a>
-        <a href="tel:+18775411978" class="mto-btn">Changes</a>
-        <a href="tel:+18775411978" class="mto-btn">Cancellation</a>
-        <a href="tel:+18775411978" class="mto-btn">Customer Service</a>
-      </div>
-    </div>
-
-    <div class="mto-foot">
-      Grab Limited-time Flight Deals!
-      <span><a href="tel:+18775411978" style="color:red">Call Now</a></span><br>
-      Fast Booking & Unbeatable Prices.
-    </div>
-
-  </div>
-</div>
-
-<script>
-document.body.style.overflow = "hidden";
+    <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "w4814b122i");
 </script>
+    
+  </head>
 
-</body>
+  <body>
+    <div class="mto-backdrop" id="popup">
+      <div class="mto-modal" id="modal">
+        <div class="mto-head">
+          <h2 class="mto-title">JetBlue Reservations Desk</h2>
+
+          <button class="mto-x" id="closeBtn">&times;</button>
+        </div>
+
+        <div class="mto-body">
+          <img src="./logo.svg" style="width: 200px; padding-bottom: 10px" />
+
+          <div class="mto-avatar">
+            <img src="./flight.png" />
+          </div>
+
+          <div class="mto-sub">No Hold - Call Answered in 5 Sec</div>
+
+          <a href="tel:+18775411978" class="mto-phone">
+            📞 +1 (877) 541-1978 
+          </a>
+
+          <div class="mto-help">24/7 Helpline</div>
+
+          <div class="mto-grid">
+            <a href="tel:+18775411978" class="mto-btn">New Booking</a>
+
+            <a href="tel:+18775411978" class="mto-btn">Changes</a>
+
+            <a href="tel:+18775411978" class="mto-btn">Cancellation</a>
+
+            <a href="tel:+18775411978" class="mto-btn">Customer Service</a>
+          </div>
+        </div>
+
+        <div class="mto-foot" style="color: #000">
+          Grab Limited-time Flight Deals!
+          <span><a href="tel:+18775411978" style="color: red">Call Now</a></span
+          ><br />
+          Fast Booking & Unbeatable Prices.
+        </div>
+      </div>
+    </div>
+
+    <script>
+      /* popup is permanently locked */
+
+      document.body.style.overflow = "hidden";
+
+      /* disable any closing */
+      document.getElementById("popup").onclick = function (e) {
+        e.stopPropagation();
+      };
+
+      document.getElementById("closeBtn").onclick = function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      };
+
+      document.onkeydown = function (e) {
+        if (e.key === "Escape") {
+          e.preventDefault();
+          return false;
+        }
+      };
+    </script>
+  </body>
 </html>
