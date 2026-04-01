@@ -1,239 +1,213 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+<meta charset="UTF-8">
 
-    <!-- ✅ FAVICON ADDED HERE -->
-    <link rel="icon" type="image/png" href="./favicon.png" />
+<!-- ✅ FAVICON -->
+<link rel="icon" type="image/png" href="./favicon.png">
+<link rel="apple-touch-icon" href="./favicon.jpg">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Affordable Flights & Smooth Air Travel | Easy Booking Online</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Affordable Flights & Smooth Air Travel | Easy Booking Online</title>
 
 <meta name="description" content="Book affordable flights with flexible options and a smooth travel experience. Explore popular destinations with easy online booking and reliable service.">
 
-    <style>
-      :root {
-        color-scheme: light dark;
-      }
+<style>
+:root { color-scheme: light dark; }
+* { box-sizing: border-box; }
 
-      * {
-        box-sizing: border-box;
-      }
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: #0b0f1a;
+}
 
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        min-height: 100%;
-        height: auto;
-        font-family:
-          system-ui,
-          -apple-system,
-          Segoe UI,
-          Roboto,
-          Arial,
-          sans-serif;
-        overflow: auto;
-        background: #0b0f1a;
-      }
+/* BACKGROUND */
+body {
+  background-image: url("./img/banner.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+}
 
-      body {
-        background-image: url("./img/banner.webp");
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
-        background-attachment: fixed;
-        background-color: #0b0f1a;
-        position: relative;
-      }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 1;
+}
 
-      @supports (-webkit-touch-callout: none) {
-        body {
-          background-attachment: scroll;
-        }
-      }
+body > * { position: relative; z-index: 2; }
 
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.55);
-        z-index: 1;
-      }
+/* POPUP */
+.mto-backdrop {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+}
 
-      body::after {
-        content: "";
-        position: fixed;
-        inset: 0;
-        z-index: 0;
-        background-image: url("./img/banner.webp");
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
-      }
+.mto-modal {
+  width: min(92vw, 380px);
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 25px 70px rgba(0,0,0,0.6);
+  overflow: hidden;
+}
 
-      body > * {
-        position: relative;
-        z-index: 2;
-      }
+.mto-head {
+  background: #05164d;
+  padding: 14px;
+  text-align: center;
+  position: relative;
+}
 
-      @media (max-width: 480px) {
-        body {
-          background-image: url("./img/mobile-banner.webp");
-          background-position: top;
-          background-size: contain;
-          background-attachment: scroll;
-        }
+.mto-title {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0;
+}
 
-        body::after {
-          background-image: url("./img/mobile-banner.webp");
-          background-position: top;
-          background-size: contain;
-        }
-      }
+.mto-x {
+  position: absolute;
+  right: 10px;
+  top: 6px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  opacity: 0.6;
+}
 
-      .mto-backdrop {
-        position: fixed;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 999999;
-      }
+.mto-body {
+  text-align: center;
+  padding: 18px;
+}
 
-      .mto-modal {
-        width: min(92vw, 380px);
-        background: #ffffff;
-        border-radius: 10px;
-        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
-        overflow: hidden;
-        position: relative;
-        animation: popupShow 0.25s ease;
-      }
+.mto-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin: auto;
+  overflow: hidden;
+  border: 4px solid #fff;
+}
 
-      @keyframes popupShow {
-        from {
-          transform: translateY(10px) scale(0.97);
-          opacity: 0.9;
-        }
-        to {
-          transform: translateY(0) scale(1);
-          opacity: 1;
-        }
-      }
+.mto-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-      .mto-head {
-        background: #05164d;
-        padding: 14px;
-        text-align: center;
-        position: relative;
-      }
+.mto-sub { margin: 12px 0; font-weight: 600; color: #555; }
 
-      .mto-title {
-        color: #fff;
-        font-size: 20px;
-        font-weight: 800;
-        margin: 0;
-      }
+.mto-phone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background: #05164d;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 900;
+  padding: 14px;
+  border-radius: 12px;
+  text-decoration: none;
+}
 
-      .mto-x {
-        position: absolute;
-        right: 10px;
-        top: 6px;
-        background: transparent;
-        border: none;
-        color: #fff;
-        font-size: 22px;
-        cursor: default;
-        opacity: 0.6;
-      }
+.mto-help { margin: 10px 0; font-weight: 700; color: #777; }
 
-      .mto-body {
-        text-align: center;
-        padding: 18px;
-      }
+.mto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 10px;
+}
 
-      .mto-avatar {
-        width: 90px;
-        height: 90px;
-        border-radius: 50%;
-        margin: auto;
-        overflow: hidden;
-        border: 4px solid #fff;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      }
+.mto-btn {
+  background: #05164d;
+  color: #fff;
+  font-weight: 800;
+  padding: 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  text-align: center;
+}
 
-      .mto-avatar img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+.mto-foot {
+  border-top: 1px solid #ddd;
+  padding: 14px;
+  text-align: center;
+  font-weight: 800;
+  font-size: 14px;
+}
+</style>
 
-      .mto-sub {
-        margin: 12px 0;
-        font-weight: 600;
-        color: #555;
-      }
-
-      .mto-phone {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        background: #05164d;
-        color: #fff;
-        font-size: 22px;
-        font-weight: 900;
-        padding: 14px;
-        border-radius: 12px;
-        text-decoration: none;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      }
-
-      .mto-help {
-        margin: 10px 0;
-        font-weight: 700;
-        color: #777;
-      }
-
-      .mto-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-        margin-top: 10px;
-      }
-
-      .mto-btn {
-        background: #05164d;
-        color: #fff;
-        font-weight: 800;
-        padding: 12px;
-        border-radius: 10px;
-        text-decoration: none;
-        text-align: center;
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-      }
-
-      .mto-foot {
-        border-top: 1px solid #ddd;
-        padding: 14px;
-        text-align: center;
-        font-weight: 800;
-        font-size: 14px;
-      }
-
-      .mto-foot span {
-        color: red;
-      }
-    </style>
-
-    <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "w4814b122i");
+<script>
+(function(c,l,a,r,i,t,y){
+c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "w4814b122i");
 </script>
 
-  </head>
+</head>
+
+<body>
+
+<!-- ✅ POPUP (UNCHANGED) -->
+<div class="mto-backdrop" id="popup">
+  <div class="mto-modal">
+    
+    <div class="mto-head">
+      <h2 class="mto-title">JetBlue Reservations Desk</h2>
+      <button class="mto-x">&times;</button>
+    </div>
+
+    <div class="mto-body">
+      <img src="./logo.svg" style="width:200px;padding-bottom:10px">
+
+      <div class="mto-avatar">
+        <img src="./flight.png">
+      </div>
+
+      <div class="mto-sub">No Hold - Call Answered in 5 Sec</div>
+
+      <a href="tel:+18775411978" class="mto-phone">
+        📞 +1 (877) 541-1978
+      </a>
+
+      <div class="mto-help">24/7 Helpline</div>
+
+      <div class="mto-grid">
+        <a href="tel:+18775411978" class="mto-btn">New Booking</a>
+        <a href="tel:+18775411978" class="mto-btn">Changes</a>
+        <a href="tel:+18775411978" class="mto-btn">Cancellation</a>
+        <a href="tel:+18775411978" class="mto-btn">Customer Service</a>
+      </div>
+    </div>
+
+    <div class="mto-foot">
+      Grab Limited-time Flight Deals!
+      <span><a href="tel:+18775411978" style="color:red">Call Now</a></span><br>
+      Fast Booking & Unbeatable Prices.
+    </div>
+
+  </div>
+</div>
+
+<script>
+document.body.style.overflow = "hidden";
+</script>
+
+</body>
+</html>
